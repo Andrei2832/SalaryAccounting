@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище SalaryAccountingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="idCity" />
+          </Key>
+          <Property Name="idCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="idProfession" />
+          </Key>
+          <Property Name="idProfession" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Saiary">
+          <Key>
+            <PropertyRef Name="idSalary" />
+          </Key>
+          <Property Name="idSalary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="SalaryDay" Type="int" Nullable="false" />
+          <Property Name="SalaryPay" Type="int" Nullable="false" />
+          <Property Name="PaymentHolidaysDay" Type="int" Nullable="false" />
+          <Property Name="PaymentHolidaysPay" Type="int" Nullable="false" />
+          <Property Name="HolidaySurchargeDay" Type="int" Nullable="false" />
+          <Property Name="HolidaySurchargePay" Type="int" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesDay" Type="int" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesPay" Type="int" Nullable="false" />
+          <Property Name="DifficultyAllowanceDay" Type="int" Nullable="false" />
+          <Property Name="DifficultyAllowancePay" Type="int" Nullable="false" />
+          <Property Name="PrizeDay" Type="int" Nullable="false" />
+          <Property Name="PrizePay" Type="int" Nullable="false" />
+          <Property Name="ratioDay" Type="int" Nullable="false" />
+          <Property Name="ratioPay" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="idProfession" Type="int" />
+          <Property Name="ServiceNumber" Type="int" Nullable="false" />
+          <Property Name="WorkshopNumber" Type="int" Nullable="false" />
+          <Property Name="RegionNumber" Type="int" Nullable="false" />
+          <Property Name="idCity" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SalaryAccounting.dbo.View_1" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Profession" />
+            <PropertyRef Name="ServiceNumber" />
+            <PropertyRef Name="WorkshopNumber" />
+            <PropertyRef Name="RegionNumber" />
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="Profession" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ServiceNumber" Type="int" Nullable="false" />
+          <Property Name="WorkshopNumber" Type="int" Nullable="false" />
+          <Property Name="RegionNumber" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SalaryAccounting.dbo.View_2" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_2">
+          <Key>
+            <PropertyRef Name="idSalary" />
+            <PropertyRef Name="SalaryDay" />
+            <PropertyRef Name="SalaryPay" />
+            <PropertyRef Name="PaymentHolidaysDay" />
+            <PropertyRef Name="PaymentHolidaysPay" />
+            <PropertyRef Name="HolidaySurchargeDay" />
+            <PropertyRef Name="HolidaySurchargePay" />
+            <PropertyRef Name="SurchargeWithoutSurchargesDay" />
+            <PropertyRef Name="SurchargeWithoutSurchargesPay" />
+            <PropertyRef Name="DifficultyAllowanceDay" />
+            <PropertyRef Name="DifficultyAllowancePay" />
+            <PropertyRef Name="PrizeDay" />
+            <PropertyRef Name="PrizePay" />
+            <PropertyRef Name="ratioDay" />
+            <PropertyRef Name="ratioPay" />
+          </Key>
+          <Property Name="idSalary" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="315" />
+          <Property Name="SalaryDay" Type="int" Nullable="false" />
+          <Property Name="SalaryPay" Type="int" Nullable="false" />
+          <Property Name="PaymentHolidaysDay" Type="int" Nullable="false" />
+          <Property Name="PaymentHolidaysPay" Type="int" Nullable="false" />
+          <Property Name="HolidaySurchargeDay" Type="int" Nullable="false" />
+          <Property Name="HolidaySurchargePay" Type="int" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesDay" Type="int" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesPay" Type="int" Nullable="false" />
+          <Property Name="DifficultyAllowanceDay" Type="int" Nullable="false" />
+          <Property Name="DifficultyAllowancePay" Type="int" Nullable="false" />
+          <Property Name="PrizeDay" Type="int" Nullable="false" />
+          <Property Name="PrizePay" Type="int" Nullable="false" />
+          <Property Name="ratioDay" Type="int" Nullable="false" />
+          <Property Name="ratioPay" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Saiary__idUser__36B12243">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Saiary" Type="Self.Saiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Saiary">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__idCity__29572725">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="idCity" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__idProfessi__286302EC">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="idProfession" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idProfession" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SalaryAccountingModelContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saiary" EntityType="Self.Saiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[idUser] AS [idUser], 
+    [View_1].[SurName] AS [SurName], 
+    [View_1].[Name] AS [Name], 
+    [View_1].[Patronymic] AS [Patronymic], 
+    [View_1].[Profession] AS [Profession], 
+    [View_1].[ServiceNumber] AS [ServiceNumber], 
+    [View_1].[WorkshopNumber] AS [WorkshopNumber], 
+    [View_1].[RegionNumber] AS [RegionNumber], 
+    [View_1].[City] AS [City]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_2" EntityType="Self.View_2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_2].[idSalary] AS [idSalary], 
+    [View_2].[FIO] AS [FIO], 
+    [View_2].[SalaryDay] AS [SalaryDay], 
+    [View_2].[SalaryPay] AS [SalaryPay], 
+    [View_2].[PaymentHolidaysDay] AS [PaymentHolidaysDay], 
+    [View_2].[PaymentHolidaysPay] AS [PaymentHolidaysPay], 
+    [View_2].[HolidaySurchargeDay] AS [HolidaySurchargeDay], 
+    [View_2].[HolidaySurchargePay] AS [HolidaySurchargePay], 
+    [View_2].[SurchargeWithoutSurchargesDay] AS [SurchargeWithoutSurchargesDay], 
+    [View_2].[SurchargeWithoutSurchargesPay] AS [SurchargeWithoutSurchargesPay], 
+    [View_2].[DifficultyAllowanceDay] AS [DifficultyAllowanceDay], 
+    [View_2].[DifficultyAllowancePay] AS [DifficultyAllowancePay], 
+    [View_2].[PrizeDay] AS [PrizeDay], 
+    [View_2].[PrizePay] AS [PrizePay], 
+    [View_2].[ratioDay] AS [ratioDay], 
+    [View_2].[ratioPay] AS [ratioPay]
+    FROM [dbo].[View_2] AS [View_2]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Saiary__idUser__36B12243" Association="Self.FK__Saiary__idUser__36B12243">
+            <End Role="User" EntitySet="User" />
+            <End Role="Saiary" EntitySet="Saiary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__idCity__29572725" Association="Self.FK__User__idCity__29572725">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__idProfessi__286302EC" Association="Self.FK__User__idProfessi__286302EC">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalaryAccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="idCity" />
+          </Key>
+          <Property Name="idCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__idCity__29572725" FromRole="City" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="idProfession" />
+          </Key>
+          <Property Name="idProfession" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__idProfessi__286302EC" FromRole="Profession" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idProfession" Type="Int32" />
+          <Property Name="ServiceNumber" Type="Int32" Nullable="false" />
+          <Property Name="WorkshopNumber" Type="Int32" Nullable="false" />
+          <Property Name="RegionNumber" Type="Int32" Nullable="false" />
+          <Property Name="idCity" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="Self.FK__User__idCity__29572725" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Profession" Relationship="Self.FK__User__idProfessi__286302EC" FromRole="User" ToRole="Profession" />
+          <NavigationProperty Name="Saiary" Relationship="SalaryAccountingModel.FK__Saiary__idUser__36B12243" FromRole="User" ToRole="Saiary" />
+        </EntityType>
+        <Association Name="FK__User__idCity__29572725">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="idCity" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__idProfessi__286302EC">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="idProfession" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idProfession" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Profession" EntityType="Self.Profession" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK__User__idCity__29572725" Association="Self.FK__User__idCity__29572725">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__idProfessi__286302EC" Association="Self.FK__User__idProfessi__286302EC">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <EntitySet Name="View_1" EntityType="SalaryAccountingModel.View_1" />
+          <EntitySet Name="Saiary" EntityType="SalaryAccountingModel.Saiary" />
+          <EntitySet Name="sysdiagrams" EntityType="SalaryAccountingModel.sysdiagrams" />
+          <AssociationSet Name="FK__Saiary__idUser__36B12243" Association="SalaryAccountingModel.FK__Saiary__idUser__36B12243">
+            <End Role="User" EntitySet="User" />
+            <End Role="Saiary" EntitySet="Saiary" />
+          </AssociationSet>
+          <EntitySet Name="View_2" EntityType="SalaryAccountingModel.View_2" />
+        </EntityContainer>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="SurName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Profession" />
+            <PropertyRef Name="ServiceNumber" />
+            <PropertyRef Name="WorkshopNumber" />
+            <PropertyRef Name="RegionNumber" />
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="SurName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Profession" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceNumber" Type="Int32" Nullable="false" />
+          <Property Name="WorkshopNumber" Type="Int32" Nullable="false" />
+          <Property Name="RegionNumber" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Saiary">
+          <Key>
+            <PropertyRef Name="idSalary" />
+          </Key>
+          <Property Name="idSalary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="SalaryDay" Type="Int32" Nullable="false" />
+          <Property Name="SalaryPay" Type="Int32" Nullable="false" />
+          <Property Name="PaymentHolidaysDay" Type="Int32" Nullable="false" />
+          <Property Name="PaymentHolidaysPay" Type="Int32" Nullable="false" />
+          <Property Name="HolidaySurchargeDay" Type="Int32" Nullable="false" />
+          <Property Name="HolidaySurchargePay" Type="Int32" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesDay" Type="Int32" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesPay" Type="Int32" Nullable="false" />
+          <Property Name="DifficultyAllowanceDay" Type="Int32" Nullable="false" />
+          <Property Name="DifficultyAllowancePay" Type="Int32" Nullable="false" />
+          <Property Name="PrizeDay" Type="Int32" Nullable="false" />
+          <Property Name="PrizePay" Type="Int32" Nullable="false" />
+          <Property Name="ratioDay" Type="Int32" Nullable="false" />
+          <Property Name="ratioPay" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="SalaryAccountingModel.FK__Saiary__idUser__36B12243" FromRole="Saiary" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Saiary__idUser__36B12243">
+          <End Type="SalaryAccountingModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SalaryAccountingModel.Saiary" Role="Saiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Saiary">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_2">
+          <Key>
+            <PropertyRef Name="idSalary" />
+            <PropertyRef Name="SalaryDay" />
+            <PropertyRef Name="SalaryPay" />
+            <PropertyRef Name="PaymentHolidaysDay" />
+            <PropertyRef Name="PaymentHolidaysPay" />
+            <PropertyRef Name="HolidaySurchargeDay" />
+            <PropertyRef Name="HolidaySurchargePay" />
+            <PropertyRef Name="SurchargeWithoutSurchargesDay" />
+            <PropertyRef Name="SurchargeWithoutSurchargesPay" />
+            <PropertyRef Name="DifficultyAllowanceDay" />
+            <PropertyRef Name="DifficultyAllowancePay" />
+            <PropertyRef Name="PrizeDay" />
+            <PropertyRef Name="PrizePay" />
+            <PropertyRef Name="ratioDay" />
+            <PropertyRef Name="ratioPay" />
+          </Key>
+          <Property Name="idSalary" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="315" FixedLength="false" Unicode="true" />
+          <Property Name="SalaryDay" Type="Int32" Nullable="false" />
+          <Property Name="SalaryPay" Type="Int32" Nullable="false" />
+          <Property Name="PaymentHolidaysDay" Type="Int32" Nullable="false" />
+          <Property Name="PaymentHolidaysPay" Type="Int32" Nullable="false" />
+          <Property Name="HolidaySurchargeDay" Type="Int32" Nullable="false" />
+          <Property Name="HolidaySurchargePay" Type="Int32" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesDay" Type="Int32" Nullable="false" />
+          <Property Name="SurchargeWithoutSurchargesPay" Type="Int32" Nullable="false" />
+          <Property Name="DifficultyAllowanceDay" Type="Int32" Nullable="false" />
+          <Property Name="DifficultyAllowancePay" Type="Int32" Nullable="false" />
+          <Property Name="PrizeDay" Type="Int32" Nullable="false" />
+          <Property Name="PrizePay" Type="Int32" Nullable="false" />
+          <Property Name="ratioDay" Type="Int32" Nullable="false" />
+          <Property Name="ratioPay" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SalaryAccountingModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profession">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.Profession">
+              <MappingFragment StoreEntitySet="Profession">
+                <ScalarProperty Name="idProfession" ColumnName="idProfession" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="idProfession" ColumnName="idProfession" />
+                <ScalarProperty Name="ServiceNumber" ColumnName="ServiceNumber" />
+                <ScalarProperty Name="WorkshopNumber" ColumnName="WorkshopNumber" />
+                <ScalarProperty Name="RegionNumber" ColumnName="RegionNumber" />
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="RegionNumber" ColumnName="RegionNumber" />
+                <ScalarProperty Name="WorkshopNumber" ColumnName="WorkshopNumber" />
+                <ScalarProperty Name="ServiceNumber" ColumnName="ServiceNumber" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saiary">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.Saiary">
+              <MappingFragment StoreEntitySet="Saiary">
+                <ScalarProperty Name="ratioPay" ColumnName="ratioPay" />
+                <ScalarProperty Name="ratioDay" ColumnName="ratioDay" />
+                <ScalarProperty Name="PrizePay" ColumnName="PrizePay" />
+                <ScalarProperty Name="PrizeDay" ColumnName="PrizeDay" />
+                <ScalarProperty Name="DifficultyAllowancePay" ColumnName="DifficultyAllowancePay" />
+                <ScalarProperty Name="DifficultyAllowanceDay" ColumnName="DifficultyAllowanceDay" />
+                <ScalarProperty Name="SurchargeWithoutSurchargesPay" ColumnName="SurchargeWithoutSurchargesPay" />
+                <ScalarProperty Name="SurchargeWithoutSurchargesDay" ColumnName="SurchargeWithoutSurchargesDay" />
+                <ScalarProperty Name="HolidaySurchargePay" ColumnName="HolidaySurchargePay" />
+                <ScalarProperty Name="HolidaySurchargeDay" ColumnName="HolidaySurchargeDay" />
+                <ScalarProperty Name="PaymentHolidaysPay" ColumnName="PaymentHolidaysPay" />
+                <ScalarProperty Name="PaymentHolidaysDay" ColumnName="PaymentHolidaysDay" />
+                <ScalarProperty Name="SalaryPay" ColumnName="SalaryPay" />
+                <ScalarProperty Name="SalaryDay" ColumnName="SalaryDay" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSalary" ColumnName="idSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_2">
+            <EntityTypeMapping TypeName="SalaryAccountingModel.View_2">
+              <MappingFragment StoreEntitySet="View_2">
+                <ScalarProperty Name="ratioPay" ColumnName="ratioPay" />
+                <ScalarProperty Name="ratioDay" ColumnName="ratioDay" />
+                <ScalarProperty Name="PrizePay" ColumnName="PrizePay" />
+                <ScalarProperty Name="PrizeDay" ColumnName="PrizeDay" />
+                <ScalarProperty Name="DifficultyAllowancePay" ColumnName="DifficultyAllowancePay" />
+                <ScalarProperty Name="DifficultyAllowanceDay" ColumnName="DifficultyAllowanceDay" />
+                <ScalarProperty Name="SurchargeWithoutSurchargesPay" ColumnName="SurchargeWithoutSurchargesPay" />
+                <ScalarProperty Name="SurchargeWithoutSurchargesDay" ColumnName="SurchargeWithoutSurchargesDay" />
+                <ScalarProperty Name="HolidaySurchargePay" ColumnName="HolidaySurchargePay" />
+                <ScalarProperty Name="HolidaySurchargeDay" ColumnName="HolidaySurchargeDay" />
+                <ScalarProperty Name="PaymentHolidaysPay" ColumnName="PaymentHolidaysPay" />
+                <ScalarProperty Name="PaymentHolidaysDay" ColumnName="PaymentHolidaysDay" />
+                <ScalarProperty Name="SalaryPay" ColumnName="SalaryPay" />
+                <ScalarProperty Name="SalaryDay" ColumnName="SalaryDay" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="idSalary" ColumnName="idSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
